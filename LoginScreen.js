@@ -10,25 +10,23 @@ import React, {Component} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   Text,
   Image,
-  TextInput,
   TouchableOpacity,
   StatusBar,
 } from 'react-native';
 
+import TextInput from './TextInput';
 
 const colors = {
     background: '#e3e3e3',
-    dodgerblue: 'rgb(58, 139, 255)',
+    dodgerBlue: 'rgb(58,139,255)',
     dusk: 'rgb(65,77,107)',
     cloudyBlue: 'rgb(175,194,219)',
     blueyGray: 'rgb(134,154,183)',
     paleGray: 'rgb(233,237,244)',
-
-}
+  };
 
 export default class App extends Component {
     constructor(props) {
@@ -51,29 +49,24 @@ export default class App extends Component {
                     <View style={styles.wrapper} >
                         <View style={styles.wrapperInput}>
                             <TextInput
-                                style={[
-                                    styles.input,
-                                    {marginTop: 60},
-                                ]}
-                                value={this.state.email}
-                                placeholder='Please write email address.'
+                                txtLabel='this is label'
+                                style={{marginTop: 60}}
+                                txt={this.state.email}
+                                txtHint='Please write email address.'
                                 placeHolderTextColor={colors.blueyGray}
-                                onChangeText={(text) => {
+                                onTextChagned={(text) => {
                                     this.onTextChanged('EMAIL', text);
                                 }} 
                             />
                             <TextInput
-                                style={[
-                                    styles.input,
-                                    {marginTop: 8},
-                                ]}
-                                value={this.state.password}
-                                placeholder='Please write password.'
+                                style={{marginTop: 8}}
+                                txt={this.state.password}
+                                txtHint='Please write password.'
                                 placeHolderTextColor={colors.blueyGray}
-                                onChangeText={(text) => {
+                                onTextChanged={(text) => {
                                     this.onTextChanged('PASSWORD', text);
                                 }}
-                                secureTextEntry
+                                isPassword
                             />
                         </View>
                     <TouchableOpacity
@@ -162,7 +155,7 @@ const styles = StyleSheet.create({
   },
   txtForgotPw: {
     fontSize: 12,
-    color: colors.dodgerblue,
+    color: colors.dodgerBlue,
     textDecorationLine: 'underline',
   },
   txtCopyright: {
